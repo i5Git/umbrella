@@ -3,6 +3,7 @@ name: Build patched Retica Rootless
 on:
   push:
     branches:
+      - main
       - retica-rootless-crashfix
   pull_request:
     branches:
