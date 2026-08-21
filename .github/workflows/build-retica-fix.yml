@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - retica-rootless-crashfix
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -71,7 +74,6 @@ jobs:
           chmod 755 "$TARGET_DIR/ZZReticaCrashFix.dylib"
           chmod 644 "$TARGET_DIR/ZZReticaCrashFix.plist"
 
-          CONTROL="merged/DEBIAN/control"
           python3 - <<'PY'
           from pathlib import Path
           p = Path('merged/DEBIAN/control')
@@ -86,7 +88,6 @@ jobs:
           p.write_text('\n'.join(lines) + '\n')
           PY
 
-          # Preserve all original maintainer scripts, preferences, fonts and dylibs.
           dpkg-deb -b merged ReticaRootless-1.0.1-i5fix1.deb
           dpkg-deb -I ReticaRootless-1.0.1-i5fix1.deb
           shasum -a 256 ReticaRootless-1.0.1-i5fix1.deb
