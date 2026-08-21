@@ -1,0 +1,9 @@
+Package: com.i5.retica-crashfix-build
+Name: Retica CrashFix Build Component
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: Build component merged into Retica Rootless 1.0.
+Maintainer: i5
+Author: i5
+Section: Tweaks
+Depends: mobilesubstrate
